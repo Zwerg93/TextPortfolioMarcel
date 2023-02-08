@@ -1,0 +1,91 @@
+\input{header}
+
+\makeatletter
+\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+\def\@bstctlcite[#1]#2{\@bsphack
+	\@for\@citeb:=#2\do{%
+		\edef\@citeb{\expandafter\@firstofone\@citeb}%
+		\if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+	\@esphack}
+\makeatother
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\interfootnotelinepenalty=10000
+
+\title{Unser tolles Thema -- wir sind suppa}
+\author{Stefan Schwammal, Susi Schwammal}
+
+\makeindex
+\makeglossaries
+\begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
+\newcommand{\reminder}[1]
+{ \textcolor{red}{<[{\bf\marginpar{\mbox{$<==$}} #1 }]>} }
+\newcommand{\icode}[1]{\lstinline$#1$}
+%\urlstyle{same}
+%\setstretch{1.5}
+\setstretch {1.433}
+\renewcommand{\arraystretch}{1.2}
+
+\includepdf{./titlepage/coversheet}
+\pagenumbering{Roman}
+\newpage
+\input{oath}
+%\input{./sections/abstract}
+
+\pagestyle{plain}
+
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+
+\tableofcontents
+\newpage
+\setcounter{RPages}{\value{page}}
+\setcounter{page}{0}
+\pagenumbering{arabic}
+\pagestyle{scrheadings}
+
+\begin{spacing}{1}
+	\chapter{Erörterung}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/erörterung.tex}
+\begin{spacing}{1}
+	\chapter{Kommentar}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/kommentar.tex}
+
+\begin{spacing}{1}
+	\chapter{Leserbrief}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/leserbrief.tex}
+
+\begin{spacing}{1}
+	\chapter{Meinungsrede}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/meinungsrede.tex}
+
+\begin{spacing}{1}
+	\chapter{Textanalyse}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/textanalyse.tex}
+
+\begin{spacing}{1}
+	\chapter{Textinterpretation}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/textinterpretation.tex}
+
+\begin{spacing}{1}
+	\chapter{Zusammenfassung}\label{chapter:introduction}
+\end{spacing}
+\input{./sections/zusammenfassung.tex}
+
+\begin{spacing}{1}
+	\chapter{Zusammenfassung}
+\end{spacing}
+\input{./sections/summary}
+
+
+\input{./sections/appendix}
+\end{document}
+
